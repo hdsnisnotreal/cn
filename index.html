@@ -6,10 +6,73 @@
   <script src="script.js"></script>
 </head>
 <body>
-  <h1>Virtual Concerts</h1>
-  <p>Buy tickets to see your favorite artists perform live online!</p>
+  <div id="sign-up-page">
+    <h1>Sign up for a free account</h1>
 
-  <div id="concerts">
+    <form id="sign-up-form">
+      <input type="text" name="name" placeholder="Name">
+      <input type="date" name="birthdate" placeholder="Birthdate (MM/DD/YYYY)">
+      <input type="email" name="email" placeholder="Email">
+      <input type="text" name="username" placeholder="Username">
+      <input type="password" name="password" placeholder="Password">
+      <input type="file" name="avatar" placeholder="Profile picture (optional)">
+      <input type="text" name="address" placeholder="Home address">
+      <input type="number" name="card-number" placeholder="Credit card number">
+      <input type="number" name="cvv" placeholder="CVV">
+      <input type="date" name="expiry-date" placeholder="Expiry date (MM/YYYY)">
+      <input type="text" name="cardholder-name" placeholder="Cardholder name">
+
+      <button type="submit">Sign up</button>
+    </form>
+  </div>
+
+  <div id="home-page">
+    <h1>Welcome to Virtual Concerts!</h1>
+
+    <div id="concerts">
     </div>
 
-  <button id="buy-ticket-btn">Buy Ticket</button>
+    <div id="account-info">
+      <h2>Your account information</h2>
+
+      <p>Name: <span id="account-name"></span></p>
+      <p>Birthdate: <span id="account-birthdate"></span></p>
+      <p>Email: <span id="account-email"></span></p>
+      <p>Username: <span id="account-username"></span></p>
+      <p>Profile picture: <img id="account-avatar" src=""></p>
+      <p>Home address: <span id="account-address"></span></p>
+      <p>Credit card number: <span id="account-card-number"></span></p>
+      <p>CVV: <span id="account-cvv"></span></p>
+      <p>Expiry date: <span id="account-expiry-date"></span></p>
+      <p>Cardholder name: <span id="account-cardholder-name"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // This function will handle the sign up form submission
+    function handleSignUpFormSubmission(event) {
+      event.preventDefault();
+
+      // Get the sign up form data
+      const formData = new FormData(event.target);
+
+      // Send the sign up form data to the API
+      fetch('https://api.example.com/users/signup', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        // If the sign up was successful, redirect the user to the home page
+        if (response.status === 200) {
+          window.location = 'home.html';
+        } else {
+          // Handle the error
+        }
+      });
+    }
+
+    // Initialize the website
+    const signUpForm = document.getElementById('sign-up-form');
+    signUpForm.addEventListener('submit', handleSignUpFormSubmission);
+  </script>
+</body>
+</html>
