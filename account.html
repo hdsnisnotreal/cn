@@ -41,59 +41,40 @@
   </main>
 
   <script>
-    // Display the user's username in the header
-    const username = document.getElementById('username');
-    username.textContent = localStorage.getItem('username');
+// Show the credit card information when the user hits "submit"
+const submitBtn = document.getElementById('submit-btn');
+submitBtn.addEventListener('click', () => {
+  // Validate the user's password
+  const password = document.querySelector('input[name="password"]').value;
 
-    // Display the user's account information
-    const realName = document.getElementById('real-name');
-    realName.textContent = localStorage.getItem('real-name');
+  // If the password is correct, reveal the credit card information
+  if (password === 'password') {
+    const creditCardNumber = document.getElementById('credit-card-number');
+    creditCardNumber.textContent = localStorage.getItem('credit-card-number');
 
-    const dateOfBirth = document.getElementById('date-of-birth');
-    dateOfBirth.textContent = localStorage.getItem('date-of-birth');
+    const cvv = document.getElementById('cvv');
+    cvv.textContent = localStorage.getItem('cvv');
 
-    const address = document.getElementById('address');
-    address.textContent = localStorage.getItem('address');
+    const expiryDate = document.getElementById('expiry-date');
+    expiryDate.textContent = localStorage.getItem('expiry-date');
 
-    // Hide the credit card information section initially
+    const cardholderName = document.getElementById('cardholder-name');
+    cardholderName.textContent = localStorage.getItem('cardholder-name');
+
+    // Show the credit card information section
     const creditCardInfoSection = document.getElementById('credit-card-info');
-    creditCardInfoSection.style.display = 'none';
+    creditCardInfoSection.style.display = 'block';
+  } else {
+    // Display an error message
+    alert('Incorrect password');
+  }
+});
 
-    // Show the credit card information section when the user clicks the "Credit Card Info" button
-    const creditCardInfoBtn = document.getElementById('credit-card-info-btn');
-    creditCardInfoBtn.addEventListener('click', () => {
-      creditCardInfoSection.style.display = 'block';
-    });
-
-    // Validate the user's password when the user clicks the "Submit" button
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.addEventListener('click', () => {
-      const password = document.querySelector('input[name="password"]').value;
-
-      // If the password is correct, reveal the credit card information
-      if (password === 'password') {
-        const creditCardNumber = document.getElementById('credit-card-number');
-        creditCardNumber.textContent = localStorage.getItem('credit-card-number');
-
-        const cvv = document.getElementById('cvv');
-        cvv.textContent = localStorage.getItem('cvv');
-
-        const expiryDate = document.getElementById('expiry-date');
-        expiryDate.textContent = localStorage.getItem('expiry-date');
-
-        const cardholderName = document.getElementById('cardholder-name');
-        cardholderName.textContent = localStorage.getItem('cardholder-name');
-      } else {
-        // Display an error message
-        alert('Incorrect password');
-      }
-    });
-
-    // Redirect to the home page when the user clicks the "Back" button
-    const backBtn = document.querySelector('section#back-button button');
-    backBtn.addEventListener('click', () => {
-      window.location = 'home.html';
-    });
+// Redirect to home.html when the user hits "back"
+const backBtn = document.querySelector('section#back-button button');
+backBtn.addEventListener('click', () => {
+  window.location = 'home.html';
+});
   </script>
 </body>
 </html>
