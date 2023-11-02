@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Virtual Concerts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Virtual Concerts</h1>
 
+    <div id="user-avatar">
+      <img src="https://example.com/avatar.png" alt="User avatar">
+    </div>
+  </header>
+
+  <main>
+    <section id="top-concerts">
+      <h2>Upcoming Concerts</h2>
+
+      <div class="concerts">
+        </div>
+    </section>
+
+    <section id="bottom-concerts">
+      <h2>More Upcoming Concerts</h2>
+
+      <div class="concerts">
+        </div>
+    </section>
+  </main>
+
+  <script>
+    // Redirect to account.html when the user clicks the avatar image
+    document.getElementById('user-avatar').addEventListener('click', () => {
+      window.location = 'account.html';
+    });
+  </script>
+</body>
+</html>
