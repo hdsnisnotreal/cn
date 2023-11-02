@@ -71,9 +71,16 @@ submitBtn.addEventListener('click', () => {
 });
 
 // Redirect to home.html when the user hits "back"
-const backBtn = document.querySelector('section#back-button button');
-backBtn.addEventListener('click', () => {
-  window.location = 'home.html';
+const buttons = document.querySelectorAll('button');
+
+for (const button of buttons) {
+  button.addEventListener('click', () => {
+    // If the button is the back button, redirect to home.html
+    if (button.textContent === 'Back') {
+      window.location.href = 'home.html';
+    }
+  });
+}
 });
   </script>
 </body>
